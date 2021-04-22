@@ -1,12 +1,12 @@
 <template>
   <div class="about">
-    <p class="h1">Let me tell you a lil bit about this site ay?!</p>
+    <h2 class="h1">Let me tell you a lil bit about this site ay?!</h2>
 
     <div class="pdiv">
-      <p>It was made with Vue3, powered by TypeSript</p>
+      <p>It was made with Vue3, powered by TypeScript</p>
       <p>
-        it gets data from might Deeeezer and let You login and add shit'n <br />
-        stuff through your ol'pal goooogle!
+        it gets data from mighty Deeeezer and let You login and add shit'n stuff <br />
+         through your ol'pal uncle gooOOoogle!
       </p>
     </div>
   </div>
@@ -20,17 +20,19 @@
   margin: auto;
   height: 100vh;
   color: black;
+  font-size: 1.4rem !important;
+  @media (max-width:500px) {
+    font-size: 1.2rem !important;
+  }
   .h1 {
     margin: 40px;
     transform: rotate(3deg);
-    font-size: 1.8rem;
     padding: 5px;
     background: red;
     color: white;
   }
   .pdiv {
     transform: rotate(-1deg);
-    font-size: 1.6rem;
     background: black;
     color: white;
     font-weight: 600;

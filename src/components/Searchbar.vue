@@ -1,15 +1,15 @@
 <template>
   <div class="searchbar">
-    <form @submit.prevent="getDataResults">
+    <form class="form" @submit.prevent="getDataResults">
       <input
         v-model="query"
         placeholder="what is it you're looking for..."
         type="text"
-        class="searchbar__input"
+        class="form__input"
       />
+      <button @click="detDataResults" class="btn">click for tunes</button>
     </form>
-    <Results/>
-
+    <Results />
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default defineComponent({
     return {
       getDataResults,
       query,
-      results: computed(()=> store.getters.getResults,)
+      results: computed(() => store.getters.getResults),
     };
   },
 });
@@ -44,21 +44,43 @@ export default defineComponent({
 <style scoped lang="scss">
 .searchbar {
   padding: 200px 0;
-  &__input {
-    background: transparent;
+  .form {
+    &__input {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: auto;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid black;
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 5px;
+      outline: none;
+      height: 60px;
+      width: 50%;
+      transition: all 0.3s ease, border-radius 0.3s ease;
+      &:focus {
+        background: rgb(255, 255, 255);
+        transform: rotate(3deg);
+        box-shadow: 14px 14px 2px -2px rgb(0, 0, 0);
+      }
+    }
+  }
+  .btn {
     border: none;
-    border-bottom: 2px solid black;
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 5px;
-    outline: none;
-    height: 60px;
-    width: 50%;
-    transition: all 0.3s ease, border-radius 0.3s ease;
-    &:focus {
-      background: rgba(255, 255, 255, 0.514);
-      transform: rotate(3deg);
-      box-shadow:  14px 14px 2px -2px rgb(0, 0, 0);
+    background: black;
+    color: white;
+    width: 100px;
+    height: auto;
+    font-size: 0.9rem;
+    transform: rotate(-5deg);
+    padding: 10px;
+    &:hover {
+      filter: invert(1);
+      box-shadow:0 0 7px 3px white;
+      cursor: pointer;
+      transform: rotate(5deg);
     }
   }
 }
