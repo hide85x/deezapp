@@ -28,25 +28,30 @@ export default defineComponent({
   justify-content: center;
   flex-wrap: wrap;
   z-index: 0;
-
+  &__item:nth-child(odd) {
+    transform: rotate(-5deg);
+  }
+  &__item:nth-child(even) {
+    transform: rotate(2deg);
+  }
   &__item {
     background: black;
     color: white;
-    box-shadow: 4px 24px 2px -2px rgb(204, 0, 0);
+    box-shadow: 14px 24px 2px -2px rgb(204, 0, 0);
     font-size: 1.2rem;
-    width: 300px;
-    transition: transform 0.3s ease;
+    width: 250px;
+    transition: all 0.3s ease;
     z-index: 10;
+    p {
+      padding: 10px;
+    }
+
     &:hover {
       transform: scale(1.3) rotate(-5deg);
+      z-index: 22;
+      cursor: pointer;
+      box-shadow: 0 0 12px 1500px rgba(0, 0, 0, 0.664);
     }
-    &:nth-child(even) p {
-      transform: rotate(-2deg);
-    }
-  }
-  .results__item:nth-child(odd) {
-    transform: rotate(2deg);
-    z-index: 10;
   }
 }
 </style>
