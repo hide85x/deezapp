@@ -18,18 +18,17 @@ const methods = {
   //   const newFavsList = state.favorites.filter(el => itemId !== el.id)
   //   state.favorites = newFavsList
   // }
+  getDataByQuery: async(query :String) => {
+   const results:AxiosResponse<any>= await axios(`https://api.deezer.com/search?q=${query}`)
+   console.log(results.data.data)
+   state.results=results.data.data
+  }
 };
 const getters = {
   getResults: computed(() => state.results),
   getFavorites: computed(() => state.favorites)
 };
 
-const getData= async() => {
- const results:AxiosResponse<SingleALbum>= await axios('https://api.deezer.com/album/302127')
- console.log(results.data)
- return state.results.push(results.data)
-}
-getData()
 
 export default {
   state: readonly(state),

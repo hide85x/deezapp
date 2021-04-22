@@ -1,12 +1,11 @@
 <template>
   <div class="nav">
-    <div></div>
-    <img class="nav__logo" src="../assets/casette.png" alt="">
+    <img class="nav__logo" src="../assets/casette.png" alt="" />
     <div class="nav__items">
-
-    <router-link class="nav__item" to="/">Home</router-link>
-    <router-link class="nav__item" to="/faveshit">Faveshit</router-link>
-    <router-link class="nav__item" to="/about">About</router-link>
+      <router-link class="nav__item" to="/"><p id="pone">Home</p> </router-link>
+      <router-link class="nav__item" to="/faveshit"><p id="ptwo">Faveshit</p>
+      </router-link>
+      <router-link class="nav__item" to="/about"><p id="pthree">About</p> </router-link>
     </div>
   </div>
 </template>
@@ -20,41 +19,66 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .nav {
-  margin: 50px;
-  background: linear-gradient(to right,rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.479));
+  position: fixed;
+  margin: 50px 0;
+  background: linear-gradient(to right,rgba(255, 255, 255, 0),rgba(0, 0, 0, 0.671));
   display: flex;
-  gap: 30px;
   justify-content: flex-end;
   align-items: center;
-  border-right: 2px solid black;
+  border-right: 3px solid black;
   border-radius: 0 20px 20px 0;
   height: 60px;
-  max-width: 450px;
-  z-index: 1;
-  
+  width: 500px;
+  z-index: 20;
+  @media (max-width:700px) {
+      width: 250px;
+  }
 
   &__logo {
-      width: 200px;
-      transform: rotate(10deg);
-      position: absolute;
+    width: 200px;
+    transform: rotate(10deg);
+    position: absolute;
     left: 10px;
-    z-index: 223;
-    @media (max-width:700px) {
-        width: 100px;
-        
+    z-index: 20;
+    @media (max-width: 700px) {
+      width: 100px;
+      margin:0;;
     }
   }
+  &__items {
+    background: red;
+    display: flex;
+    justify-content: end;
+    padding: 5px 0;
+    transform: rotate(-5deg);
+    @media (max-width:700px) {
+        flex-direction: column;
+        
+    }
+    p {
+      padding: 8px;
+      margin: 0;
+      transform: rotate(-20deg);
+    }
+       #ptwo {
+        transform: rotate(10deg);
+    }
+ 
+  }
   &__item {
-    z-index: 12;
+    font-size: 1.4rem;
     margin-right: 10px;
     text-decoration: none;
     font-weight: bold;
     color: white;
 
+    @media (max-width: 600px) {
+    }
+
     &.router-link-exact-active {
-      color: black;
-      text-decoration: underline;
+      background: black;
     }
   }
 }
