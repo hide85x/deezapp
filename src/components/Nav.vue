@@ -52,7 +52,7 @@ export default {
     position: absolute;
     left: 10px;
     z-index: 20;
-    @media (max-width: 700px) {
+    @media (max-width: 750px) {
       width: 100px;
       margin: 0;
     }

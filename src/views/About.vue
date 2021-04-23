@@ -18,11 +18,14 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+  padding-top: 50px;
   height: 100vh;
   color: black;
   font-size: 1.4rem !important;
-  @media (max-width:500px) {
+  @media (max-width:750px) {
     font-size: 1.2rem !important;
+      padding-top: 150px;
+
   }
   .h1 {
     margin: 40px;

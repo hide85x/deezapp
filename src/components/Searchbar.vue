@@ -74,13 +74,13 @@ export default defineComponent({
     width: 100px;
     height: auto;
     font-size: 0.9rem;
-    transform: rotate(-5deg);
+    transform: rotate(-9deg);
     padding: 10px;
     &:hover {
       filter: invert(1);
       box-shadow:0 0 7px 3px white;
       cursor: pointer;
-      transform: rotate(5deg);
+      transform: rotate(-3deg);
     }
   }
 }
