@@ -1,8 +1,9 @@
 <template>
   <div class="results" v-if="results">
-    <div class="results__item" v-for="res in results.value" :key="res.id">
-      <p>{{ res.title }}</p>
-      <img :src="res.album.cover_medium" alt="" />
+    <div class="results__item" v-for="result in results" :key="result.id">
+      <p>{{ result.title }}</p>
+      <img :src="result.album.cover_medium" alt="" />
+      <Modal :result="result" />
     </div>
   </div>
 </template>
@@ -11,10 +12,12 @@
 import { defineComponent, computed } from "vue";
 import { SingleALbum } from "../interfaces/interface";
 import store from "../store/index";
+import Modal from "./Modal.vue";
 export default defineComponent({
+  components: { Modal },
   setup() {
     return {
-      results: computed(() => store.getters.getResults),
+      results: computed((): SingleALbum[] => store.getters.getResults.value),
     };
   },
 });

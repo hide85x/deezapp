@@ -15,16 +15,18 @@
         <p class="item">login</p></router-link
       >
       <router-link class="nav__item item" to="/login">
-        <p class="item">sigIn</p></router-link
+        <p class="item" @click="logout">logout</p></router-link
       >
     </div>
   </div>
 </template>
 
 <script>
+import store from '../store/index'
 export default {
   setup() {
-    return {};
+    const logout= ()=> store.methods.logout()
+    return {logout};
   },
 };
 </script>

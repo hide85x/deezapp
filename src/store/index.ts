@@ -1,42 +1,65 @@
 import { reactive, ref, readonly, computed } from 'vue'
 
 
-import { SingleALbum } from '../interfaces/interface';
+import { SingleALbum, Tracks, User } from '../interfaces/interface';
 import axios, { AxiosResponse } from 'axios';
 
-const state = reactive({
-  results: new Array<SingleALbum>(),
-  favorites: new Array<SingleALbum>()
+const state = reactive<{
+  loggedUser: User | null,
+  results: SingleALbum[],
+  favorites: SingleALbum[],
+  tracks: Tracks[]
+}>({
+  loggedUser: null,
+  results: [],
+  favorites: [],
+  tracks: []
 })
+import firebase from 'firebase'
 const methods = {
-  //  addToFavs(item:SingleALbum): void {
+  logNewUser: async (payload: User) => state.loggedUser = payload,
+  logout: async () => {
+    firebase
+      .auth()
+      .signOut()
+      .then((res: any) => state.loggedUser = null)
+      .catch((err) => console.log(err));
+  },
+  getTracklist: async (tracklistUrl: string): Promise<any> => {
+    try {
+      const results: AxiosResponse<any> = await axios(tracklistUrl)
+      console.log(results.data.data)
+      state.tracks = results.data.data
 
-  //     const isThere =state.favorites.find((el:SingleALbum) => el.id === item.id)
-  //     isThere ? alert(`Come on! ${item.title} is already there!`): state.favorites.push(item)
-  //   },
-  // deleteFromFavs(itemId:string): void {
-  //   const newFavsList = state.favorites.filter(el => itemId !== el.id)
-  //   state.favorites = newFavsList
-  // }
+    }
+    catch (err) { console.log(err) }
+  },
   getDataByQuery: async (query: String) => {
+    if (query.length === 0) {
+      alert('type something!')
+    }
     try {
       const results: AxiosResponse<any> = await axios
         .get(
           `http://localhost:8080/search?q=${query}`, {
 
-          });
+        });
+      if (results.data.data === undefined) {
+        alert('no tunes for Ya!')
+      }
       console.log(results.data.data)
       state.results = results.data.data
 
     }
-    catch (err) { console.log(err) }{
-
-      }
+    catch (err) { console.log(err) } {
+    }
   }
 };
 const getters = {
-  getResults: computed(() => state.results),
-  getFavorites: computed(() => state.favorites)
+  getUser: computed((): User | null => state.loggedUser),
+  getResults: computed((): SingleALbum[] => state.results),
+  getFavorites: computed((): SingleALbum[] => state.favorites),
+  getTracks: computed(() => state.tracks)
 };
 
 

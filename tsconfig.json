@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/main.js", "src/firebase.js"  ],
   "exclude": [
     "node_modules"
   ]
