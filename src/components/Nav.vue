@@ -41,7 +41,6 @@ export default {
   align-items: center;
   border-right: 3px solid black;
   border-radius: 0 20px 20px 0;
-  height: 60px;
   width: 100%;
   z-index: 20;
   @media (max-width: 700px) {
@@ -89,7 +88,7 @@ export default {
       transform: scale(1.2);
     }
 
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
     }
 
     &.router-link-exact-active {
